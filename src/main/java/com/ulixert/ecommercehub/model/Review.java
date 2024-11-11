@@ -2,7 +2,6 @@ package com.ulixert.ecommercehub.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -24,9 +23,6 @@ public class Review {
     private String reviewText;
 
     @Column(nullable = false)
-    private double rating;
-
-    @NotNull
     private double rating;
 
     @ElementCollection
