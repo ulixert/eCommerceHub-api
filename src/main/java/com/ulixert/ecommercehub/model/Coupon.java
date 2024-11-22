@@ -5,42 +5,38 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "coupons")
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Coupon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false, unique = true)
     private String code;
 
     @Column(nullable = false)
-    private Integer discountPercentage;
+    private Double discountPercentage;
 
     @Column(nullable = false)
-    private LocalDate validityStartDate;
+    private LocalDate expirationDate;
 
-    @Column(nullable = false)
-    private LocalDate validityEndDate;
+    private Boolean isActive = true;
 
-    @Column(nullable = false)
-    private BigDecimal minimumOrderPrice;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", unique = true)
+    private User user;
 
-    @Column(nullable = false)
-    @Builder.Default
-    private boolean isActive = true;
-
-    @ManyToMany(mappedBy = "usedCoupons", fetch = FetchType.LAZY)
-    private Set<User> usedByUsers = new HashSet<>();
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 }

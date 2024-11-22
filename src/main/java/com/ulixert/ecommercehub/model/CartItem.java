@@ -1,7 +1,5 @@
 package com.ulixert.ecommercehub.model;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,28 +9,22 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "cart_items")
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JsonIgnore
-    private Cart cart;
+    private Integer quantity = 1;
 
-//    private Product product;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "product_id")
+    private Product product;
 
-    private String size;
-
-    private int quantity = 1;
-
-    private Double msrp;
-
-    private Double discount;
-
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id")
+    private User user;
 }
