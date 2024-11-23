@@ -22,6 +22,7 @@ public class CartItem implements Serializable {
     @ManyToOne
     @MapsId("cartId")
     @JoinColumn(name = "cart_id")
+    @ToString.Exclude
     private Cart cart;
 
     @ManyToOne

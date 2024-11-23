@@ -1,2 +1,11 @@
 ### Get Homepage
-GET http://localhost:5454
+GET http://localhost:8080
+
+### Sign up
+POST http://localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "email": "gamaliel_castanon9nm@duplicate.hoh",
+  "password": "123456"
+}

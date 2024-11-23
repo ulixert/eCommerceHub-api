@@ -22,6 +22,7 @@ public class OrderItem implements Serializable {
     @ManyToOne
     @MapsId("orderId")
     @JoinColumn(name = "order_id")
+    @ToString.Exclude
     private Order order;
 
     @ManyToOne

@@ -1,8 +1,8 @@
 package com.ulixert.ecommercehub.service;
 
-import com.ulixert.ecommercehub.model.User;
-import jakarta.validation.Valid;
+import com.ulixert.ecommercehub.dto.UserDTO.UserDTO;
+import com.ulixert.ecommercehub.dto.UserDTO.UserRegistrationDTO;
 
 public interface UserService {
-    User registerUser(@Valid User user);
+    UserDTO registerUser(UserRegistrationDTO userRegistrationDTO);
 }

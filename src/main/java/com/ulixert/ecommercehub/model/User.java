@@ -10,11 +10,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-enum Role {
-    CUSTOMER,
-    ADMIN
-}
-
 @Entity
 @Table(name = "users")
 @Getter
@@ -22,10 +17,12 @@ enum Role {
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     @NotBlank(message = "Name is required")
@@ -35,6 +32,7 @@ public class User {
     @Email(message = "Invalid email format")
     @NotBlank(message = "Email is required")
     @Column(nullable = false, unique = true)
+    @EqualsAndHashCode.Include
     private String email;
 
     @Size(min = 8, message = "Password must be at least 8 characters long")
@@ -46,11 +44,17 @@ public class User {
     private Role role = Role.CUSTOMER;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
     private Cart cart;
 
     @OneToMany(mappedBy = "user")
+    @ToString.Exclude
     private Set<Order> orders;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+    public enum Role {
+        CUSTOMER, ADMIN
+    }
 }
