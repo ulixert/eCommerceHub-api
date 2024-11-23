@@ -140,11 +140,3 @@ Contributions are welcome! Please submit a pull request or open an issue for any
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-**Note:** Replace placeholders like `yourusername` and database credentials with your actual information.
-
----
-
-If you have any questions or need further assistance, feel free to contact me!
