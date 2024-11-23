@@ -1,4 +1,4 @@
-package com.ulixert.ecommercehub.dto;
+package com.ulixert.ecommercehub.dto.UserDTO;
 
 import lombok.Data;
 
