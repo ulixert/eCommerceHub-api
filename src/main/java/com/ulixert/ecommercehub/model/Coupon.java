@@ -33,7 +33,7 @@ public class Coupon {
     @NotNull(message = "Expiration time is required")
     @FutureOrPresent(message = "Expiration time must be in the present or future")
     @Column(nullable = false)
-    private LocalDateTime expirationDate;
+    private LocalDateTime expirationTime;
 
     @Column(nullable = false)
     private Boolean isActive = true;
