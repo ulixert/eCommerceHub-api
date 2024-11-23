@@ -48,7 +48,7 @@ The application is built using the following technologies:
 1. **Clone the repository:**
 
    ```
-   git clone https://github.com/yourusername/ecommerce-backend.git
+   git clone https://github.com/ulixert/eCommerceHub-api.git
    cd ecommerce-backend
    ```
 
